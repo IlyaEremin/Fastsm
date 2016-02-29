@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
+apply from: "$rootDir/utils.gradle"
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
@@ -9,7 +11,7 @@ android {
         applicationId "com.ilyaeremin.fastms"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 1
+        versionCode getAutoVersionCode()
         versionName "1.0"
     }
     buildTypes {
@@ -23,27 +25,15 @@ android {
     }
 }
 
-ext {
-    support = "23.1.1"
-}
+apply from: "$rootDir/deps.gradle"
 
 dependencies {
     compile 'com.squareup.flow:flow:1.0.0-alpha'
-    compile "com.android.support:recyclerview-v7:$support"
-    compile "com.android.support:appcompat-v7:$support"
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    compile supportLibs
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+    compile 'com.karumi:dexter:2.2.1'
 
     testCompile 'junit:junit:4.12'
-}
-buildscript {
-    ext.kotlin_version = '1.0.0-rc-1036'
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
-repositories {
-    mavenCentral()
 }

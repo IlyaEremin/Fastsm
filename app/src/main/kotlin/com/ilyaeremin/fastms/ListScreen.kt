@@ -8,14 +8,18 @@ import com.ilyaeremin.fastms.utils.creator
  * Created by Ilya Eremin on 12.02.2016.
  */
 
-object ListScreen : Parcelable {
+class ListScreenKt : Parcelable {
 
     @JvmField val CREATOR = creator { this }
     override fun describeContents(): Int = 0
-    override fun writeToParcel(dest: Parcel?, flags: Int) = Unit
+    override fun writeToParcel(dest: Parcel?, flags: Int): Unit {}
 
     override fun equals(other: Any?): Boolean {
-        return other != null && other is ListScreen
+        return other != null && other is ListScreenKt
+    }
+
+    override fun hashCode(): Int{
+        return CREATOR.hashCode()
     }
 
 }

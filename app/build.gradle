@@ -28,7 +28,7 @@ ext {
 }
 
 dependencies {
-    compile project(':flow')
+    compile 'com.squareup.flow:flow:1.0.0-alpha'
     compile "com.android.support:recyclerview-v7:$support"
     compile "com.android.support:appcompat-v7:$support"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
